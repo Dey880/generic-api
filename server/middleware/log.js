@@ -9,7 +9,10 @@ const logMiddleware = (req, res, next) => {
         minute: '2-digit'
     });
 
-    const logEntry = `${date} ${time} - ${req.path}\n`;
+    const method = req.method;
+
+    const logEntry = `${date} ${time} - [${method}] ${req.path}\n`;
+
 
     const logFilePath = '/var/logs/routes.log';
 
