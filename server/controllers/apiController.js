@@ -12,7 +12,6 @@ const apiController = {
             console.error(error);
             res.status(500).send({ error: "Internal Server Error" });
         };
-
     },
     postItems: async (req, res) => {
         try {
