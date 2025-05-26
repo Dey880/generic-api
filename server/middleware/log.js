@@ -13,11 +13,15 @@ const logMiddleware = (req, res, next) => {
 
     const logFilePath = '/var/logs/routes.log';
 
-    fs.appendFile(logFilePath, logEntry, (err) => {
-        if (err) {
-            console.error('Failed to write log:', err);
-        }
-    });
+    if (process.env.NODE_ENV === 'production') {
+        fs.appendFile(logFilePath, logEntry, (err) => {
+            if (err) {
+                console.error('Failed to write log:', err);
+            }
+        });
+    } else {
+        console.log("APPENDING TO FILE", logEntry)
+    }
 
     next();
 };
