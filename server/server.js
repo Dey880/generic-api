@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 
 const apiRoutes = require('./routes/apiRoutes');
 
-const logMiddleware = require('./middleware/log')
+const logMiddleware = require('./middleware/log');
 
 const app = express();
 

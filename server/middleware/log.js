@@ -11,7 +11,7 @@ const logMiddleware = (req, res, next) => {
 
     const method = req.method;
 
-    const logEntry = `${date} ${time} - [${method}] ${req.path}\n`;
+    const logEntry = `${req.ip} -> ${date} ${time} - [${method}] ${req.path}\n`;
 
 
     const logFilePath = '/var/logs/routes.log';
@@ -20,11 +20,11 @@ const logMiddleware = (req, res, next) => {
         fs.appendFile(logFilePath, logEntry, (err) => {
             if (err) {
                 console.error('Failed to write log:', err);
-            }
+            };
         });
     } else {
-        console.log("APPENDING TO FILE", logEntry)
-    }
+        console.log("APPENDING TO FILE\n", logEntry);
+    };
 
     next();
 };
